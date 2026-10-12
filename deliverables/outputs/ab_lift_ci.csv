@@ -1,0 +1,16 @@
+metric,value,numerator,denominator,note
+conversion_rate_ad,0.025546559636683747,14423,564577,x/n
+conversion_rate_psa,0.01785410644448223,420,23524,x/n
+absolute_lift_pp,0.7692453192201517,,,percentage points
+relative_lift_pct,43.08506402222583,,,%
+z_stat,7.3700781265454145,,,pooled two-proportion
+p_value,1.7052807161559727e-13,,,two-sided
+ci95_diff_pp_lo,0.5950932431611006,,,"Wald, unpooled"
+ci95_diff_pp_hi,0.9433973952792027,,,"Wald, unpooled"
+relative_risk,1.4308506402222583,,,ratio of rates
+ci95_ratio_lo,1.2996965810628216,,,log method
+ci95_ratio_hi,1.5752396247362963,,,log method
+n_required_per_group_80pct,5631.0,,,at observed effect
+achieved_power,0.9999999990438161,,,at actual n
+adequately_powered,1.0,,,1=yes
+extra_conversions_per_100k,769.2453192201517,,,no revenue data

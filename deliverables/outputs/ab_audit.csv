@@ -1,0 +1,11 @@
+metric,value,note
+n_total,588101.0,
+n_ad,564577.0,treatment
+n_psa,23524.0,control
+imbalance_ratio_ad_over_psa,24.0,1.0 = balanced
+duplicate_rows,0.0,
+duplicate_user_ids,0.0,
+users_in_both_arms,0.0,should be 0
+total_ads_mean_ad,24.82,
+total_ads_mean_psa,24.76,
+total_ads_welch_p,0.8274332524963,exposure var — expected to differ
