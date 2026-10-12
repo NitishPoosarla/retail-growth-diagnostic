@@ -7,15 +7,16 @@
 ### 1. Answer first (1 sentence)
 
 > **A single gradient-boosted model trained on the whole store panel beats the
-> seasonal-naive baseline (WAPE 10.39% vs 12.05%, a 1.65pp gain) and is the most
-> accurate on the highest-value days, so it is worth adopting for forecasting — but
-> the promo "lift" it implies is only ~28% of promo-day revenue and is an
-> **association from an observational model, not a causal estimate**, so it must not
-> be used as an ROI number.**
+> seasonal-naive baseline in summer (WAPE 10.39% vs 12.05%) and, after extension to
+> the two full Decembers, beats it at Christmas peak too (14.52% vs 17.12% in Dec
+> 2014; 23.89% vs 28.50% in Dec 2013) — so it is now peak-validated — but peak error
+> is roughly 1.4× the summer error, and the promo "lift" it implies is only ~28% of
+> promo-day revenue and is an **association from an observational model, not a causal
+> estimate**, so it must not be used as an ROI number.**
 
 ---
 
-### 2. Three supporting findings
+### 2. Supporting findings
 
 **Finding 1 — The model beats both baselines, by a modest but real margin.**
 Rolling-origin backtest over the last 6 weeks (**40,282 open store-days**, 2015-06-20 → 2015-07-31):
@@ -48,6 +49,17 @@ vs 467,496 non-promo open store-days). **The model says the naive number oversta
 promo's contribution by ~10.6pp** — promotions cluster on high-demand days, so a raw
 comparison double-counts demand that would have happened anyway.
 
+**Finding 4 — Peak validation (extension): the model holds at Christmas, but error
+roughly doubles.** Extended the backtest to the two full Decembers. Model WAPE rises
+from **10.39% (summer)** to **14.52% (Dec 2014)** and **23.89% (Dec 2013)** — a penalty
+of **+4.13 to +13.49 pp**, i.e. peak error is **~1.4×** summer error (expected: December
+demand is far more volatile). Crucially, the model **still beats seasonal-naive in both
+peaks**: Dec 2014 **14.52% vs 17.12% (+2.60 pp)**; Dec 2013 **23.89% vs 28.50% (+4.62 pp)**.
+Denominators: **23,492** (Dec 2014) and **26,901** (Dec 2013) open store-days. Caveat on
+Dec 2013: data begins 2013-01-01, so its seasonal-naive reference is missing for
+**99.9% of rows** and degrades to a store × weekday median — that comparison is against a
+*weakened* baseline, not a fair seasonal-naive.
+
 ---
 
 ### 3. So-what recommendation
@@ -70,7 +82,7 @@ comparison double-counts demand that would have happened anyway.
 | **Sundays closed** | 97.52% of Sunday store-days closed (n = 144,730) | **Low** — expected; it's a schedule, not demand | Forecast open days; re-insert 0 for closed |
 | **Closed days excluded** | 172,817 of 1,017,209 store-days (16.99%) are `Open=0`, all with Sales=0 | **Low** — including them would bias means down | Kept in `closed_store_days.csv` for re-integration as 0 |
 | **Promo is not randomized** | Promos cluster on Mon/Fri/holidays | **High for causal claims** | Labelled association-only; causal test required |
-| **Single 42-day validation window** | Summer 2015 only — no Christmas/New Year peak | **Medium** — WAPE may differ at peak; model is untested there | Re-backtest across a full year before go-live |
+| **Peak error is higher** | Model WAPE **14.52% (Dec 2014) / 23.89% (Dec 2013)** vs **10.39% summer** — now peak-tested | **Medium** — model still beats naive at peak, but absolute accuracy is ~1.4× worse | Plan peak safety stock; do not quote summer WAPE as year-round |
 | **Store-level features are target encodings** | `store_mean_log`, `store_dow_mean_log` from training history only | **Low** | Recomputed at each fold origin — no leakage |
 | **Type b small sample** | 714 store-days (1.8%) | **Medium for that segment** | Do not deploy on type b yet |
 | **No leakage by construction** | Only pre-known features used; no `Customers`, no Sales lags | **Positive** | Design fixed before training |
@@ -81,6 +93,7 @@ comparison double-counts demand that would have happened anyway.
 
 - EDA tables: `deliverables/outputs/eda_daily_revenue.csv`, `eda_dow.csv`, `eda_promo.csv`, `eda_storetype.csv`, `eda_assortment.csv` (+ `eda_*.png` figures)
 - Backtest: `deliverables/outputs/model_backtest_metrics.csv`, `..._by_storetype.csv`, `..._top_decile.csv`, `..._predictions.csv`
+- Peak extension: `deliverables/outputs/seasonal_backtest.csv`
 - Promo bridge: `deliverables/outputs/promo_lift_bridge.csv`
 - Feature importance: `deliverables/outputs/model_feature_importance.csv`
 - Code: `scripts/rossmann_eda.py`, `scripts/rossmann_forecast.py`
