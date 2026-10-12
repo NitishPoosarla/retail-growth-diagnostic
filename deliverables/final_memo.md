@@ -1,5 +1,7 @@
 # Final Memo — Retail Growth Diagnostic
-**To:** Northwind Retail Co. Executive Committee  **From:** Analytics Engagement Team  **Date:** 2026-10-11
+*Engagement sandbox: public data (Rossmann Kaggle panel; public marketing A/B
+dataset) with a fictional client used only to frame the decision.*
+**To:** Northwind Retail Co. Executive Committee  **From:** Nitish Poosarla — Analytics  **Date:** 2026-10-11
 **Decision this supports:** (a) whether to scale the ad campaign, and (b) whether promotions are worth it
 
 ---
