@@ -1,0 +1,8 @@
+metric,value
+promo_store_days,16701.0
+sum_pred_with_promo,137380884.52511853
+sum_pred_without_promo,98596457.45769945
+incremental_revenue_estimate,38784427.06741908
+avg_increment_per_store_day,2322.2817236943347
+pct_of_promo_revenue,28.231312676057048
+naive_eda_lift_pct,38.8

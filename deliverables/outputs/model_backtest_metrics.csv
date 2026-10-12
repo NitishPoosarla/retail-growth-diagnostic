@@ -1,0 +1,4 @@
+model,WAPE,margin_vs_best_baseline_pp
+Seasonal-naive (baseline 1),0.12046121314316967,0.0
+4-week moving median (baseline 2),0.18120466595310908,-6.074345280993941
+HistGradientBoosting (model),0.1039205949762387,1.6540618166930963

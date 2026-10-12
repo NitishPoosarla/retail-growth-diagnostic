@@ -1,0 +1,4 @@
+model,mean_abs_pct_err_top_decile
+Seasonal-naive,0.12747865717285578
+4-week moving median,0.18128742702932843
+HGBR model,0.11344945980026355
