@@ -1,0 +1,12 @@
+# Direct dependencies for the Retail Growth Diagnostic engagement.
+# Pinned to the versions the analysis was verified against.
+# Transitive dependencies are intentionally omitted — pip resolves them.
+# Install:  python -m venv venv && ./venv/Scripts/python.exe -m pip install -r requirements.txt
+
+pandas==3.0.6
+numpy==2.5.4
+scipy==1.18.1
+statsmodels==0.15.0
+scikit-learn==1.9.1
+matplotlib==3.11.2
+python-dotenv==1.2.4
